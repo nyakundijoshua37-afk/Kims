@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerVue · premium job applications</title>
+  <!-- Fonts & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f7f9fc;
+      color: #1e293b;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      border-bottom: 1px solid #e9edf4;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #0b2b4f, #1d4e89);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      background: #1d4e89;
+      -webkit-text-fill-color: white;
+      background-clip: unset;
+      padding: 8px;
+      border-radius: 14px;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .wallet-badge {
+      background: #eef4ff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1d4e89;
+      border: 1px solid #cfdff5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wallet-badge i {
+      color: #1d4e89;
+    }
+
+    .avatar {
+      background: #0b2b4f;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Main */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      flex: 1;
+    }
+
+    .hero {
+      margin-bottom: 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0b2b4f;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #5a6e8c;
+      font-weight: 400;
+      max-width: 620px;
+    }
+
+    .stats-bar {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2b4b74;
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2eaf3;
+    }
+
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .job-card {
+      background: white;
+      border-radius: 26px;
+      padding: 1.8rem 1.8rem 1.8rem 1.8rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9edf4;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .job-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.04);
+      border-color: #cbd9ec;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #0b2b4f;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .company {
+      font-size: 0.95rem;
+      color: #5a6e8c;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .company i {
+      color: #889bb8;
+      font-size: 0.9rem;
+    }
+
+    .salary {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1d4e89;
+      letter-spacing: -0.02em;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .salary span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #7c8eaa;
+      letter-spacing: 0;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #5a6e8c;
+      margin: 0.75rem 0 1.25rem;
+      border-top: 1px solid #eef2f9;
+      padding-top: 1rem;
+    }
+
+    .job-meta i {
+      color: #889bb8;
+      margin-right: 4px;
+    }
+
+    .unlock-btn {
+      background: #f0f6ff;
+      border: 1px solid #d0e0f5;
+      color: #1d4e89;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: auto;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .unlock-btn i {
+      font-size: 1rem;
+    }
+
+    .unlock-btn:hover {
+      background: #1d4e89;
+      border-color: #1d4e89;
+      color: white;
+      box-shadow: 0 6px 16px rgba(29, 78, 137, 0.2);
+    }
+
+    .unlock-btn:disabled,
+    .unlock-btn.unlocked {
+      background: #e6f7ed;
+      border-color: #b7e4cf;
+      color: #0c6b4b;
+      cursor: default;
+      box-shadow: none;
+    }
+
+    .unlock-btn.unlocked i {
+      color: #0c6b4b;
+    }
+
+    .unlock-btn:disabled {
+      opacity: 0.85;
+    }
+
+    /* payment modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 25, 45, 0.5);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .payment-modal {
+      background: white;
+      max-width: 460px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 2.2rem 2rem 2rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      transform: scale(0.96);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-overlay.active .payment-modal {
+      transform: scale(1);
+    }
+
+    .payment-modal h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0b2b4f;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .payment-modal p {
+      color: #5a6e8c;
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .payment-detail {
+      background: #f5f9ff;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      border: 1px solid #e0ecfa;
+    }
+
+    .payment-detail .amount {
+      font-weight: 700;
+      color: #1d4e89;
+      font-size: 1.3rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-secondary, .btn-primary {
+      border: none;
+      border-radius: 60px;
+      padding: 0.9rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary {
+      background: #f0f4fc;
+      color: #2b4b74;
+    }
+
+    .btn-secondary:hover {
+      background: #e2eaf5;
+    }
+
+    .btn-primary {
+      background: #1d4e89;
+      color: white;
+      box-shadow: 0 4px 12px rgba(29, 78, 137, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #0b3b6b;
+    }
+
+    .toast-message {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0b2b4f;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      z-index: 1100;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .toast-message.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #8b9bb5;
+      font-size: 0.85rem;
+      border-top: 1px solid #e9edf4;
+      background: white;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 1rem 1.2rem;
+      }
+      .container {
+        padding: 2rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .job-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bar {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-briefcase"></i>
+      CareerVue
+    </div>
+    <div class="header-right">
+      <div class="wallet-badge">
+        <i class="fas fa-wallet"></i> $0.00
+      </div>
+      <div class="avatar">JD</div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="container">
+    <section class="hero">
+      <h1>Premium roles.<br>Apply with confidence.</h1>
+      <p>Unlock each job application for just $39 USD. One-time payment, lifetime access to that role.</p>
+      <div class="stats-bar">
+        <div class="stat-item"><i class="fas fa-circle-check" style="color:#1d4e89;"></i> 6 high-paying roles</div>
+        <div class="stat-item"><i class="fas fa-shield-alt" style="color:#1d4e89;"></i> Secure payment</div>
+        <div class="stat-item"><i class="fas fa-bolt" style="color:#1d4e89;"></i> Instant unlock</div>
+      </div>
+    </section>
+
+    <!-- Job Grid — populated by JS -->
+    <div class="job-grid" id="jobGrid"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 CareerVue — premium job board. All prices in USD.
+  </footer>
+
+  <!-- Payment Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="payment-modal">
+      <h3>Unlock application</h3>
+      <p id="modalJobTitle">Senior Product Designer at Lumina</p>
+      <div class="payment-detail">
+        <span>One-time payment</span>
+        <span class="amount">$39.00 USD</span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="cancelPayment">Cancel</button>
+        <button class="btn-primary" id="confirmPayment">Pay $39</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-message" id="toast"></div>
+
+  <script>
+    (function() {
+      // ---------- JOB DATA (backend simulation) ----------
+      const jobs = [
+        { id: 1, title: 'Senior Product Designer', company: 'Lumina', salary: 142000, location: 'Remote', type: 'Full‑time' },
+        { id: 2, title: 'Frontend Engineer', company: 'Vertex Labs', salary: 128000, location: 'San Francisco', type: 'Full‑time' },
+        { id: 3, title: 'Engineering Manager', company: 'Nexora', salary: 175000, location: 'New York', type: 'Full‑time' },
+        { id: 4, title: 'Data Scientist', company: 'Quantify', salary: 138000, location: 'Remote', type: 'Full‑time' },
+        { id: 5, title: 'DevOps Lead', company: 'CloudPilot', salary: 155000, location: 'Austin', type: 'Full‑time' },
+        { id: 6, title: 'Product Marketing Manager', company: 'Orbit', salary: 122000, location: 'Chicago', type: 'Full‑time' }
+      ];
+
+      // state: which jobs are unlocked (in real app, fetch from backend)
+      const unlockedJobs = new Set();
+
+      // UI elements
+      const jobGrid = document.getElementById('jobGrid');
+      const modalOverlay = document.getElementById('paymentModal');
+      const modalJobTitle = document.getElementById('modalJobTitle');
+      const cancelBtn = document.getElementById('cancelPayment');
+      const confirmBtn = document.getElementById('confirmPayment');
+      const toastEl = document.getElementById('toast');
+
+      let currentJobId = null; // track which job we're paying for
+
+      // ---------- RENDER JOB CARDS ----------
+      function renderJobs() {
+        jobGrid.innerHTML = '';
+        jobs.forEach(job => {
+          const isUnlocked = unlockedJobs.has(job.id);
+          const card = document.createElement('div');
+          card.className = 'job-card';
+          card.dataset.jobId = job.id;
+
+          // salary formatted
+          const salaryFormatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(job.salary);
+
+          card.innerHTML = `
+            <div class="job-title">${job.title}</div>
+            <div class="company"><i class="fas fa-building"></i> ${job.company}</div>
+            <div class="salary">${salaryFormatted} <span>/ year</span></div>
+            <div class="job-meta">
+              <span><i class="fas fa-map-pin"></i> ${job.location}</span>
+              <span><i class="fas fa-clock"></i> ${job.type}</span>
+            </div>
+            <button class="unlock-btn ${isUnlocked ? 'unlocked' : ''}" data-job-id="${job.id}" ${isUnlocked ? 'disabled' : ''}>
+              ${isUnlocked ? '<i class="fas fa-check-circle"></i> Unlocked' : '<i class="fas fa-lock"></i> Unlock application · $39'}
+            </button>
+          `;
+
+          jobGrid.appendChild(card);
+        });
+
+        // attach listeners to unlock buttons
+        document.querySelectorAll('.unlock-btn').forEach(btn => {
+          if (!btn.disabled) {
+            btn.addEventListener('click', (e) => {
+              const jobId = Number(btn.dataset.jobId);
+              openPaymentModal(jobId);
+            });
+          }
+        });
+      }
+
+      // ---------- OPEN MODAL ----------
+      function openPaymentModal(jobId) {
+        const job = jobs.find(j => j.id === jobId);
+        if (!job) return;
+        currentJobId = jobId;
+        modalJobTitle.textContent = `${job.title} at ${job.company}`;
+        modalOverlay.classList.add('active');
+      }
+
+      // ---------- CLOSE MODAL ----------
+      function closeModal() {
+        modalOverlay.classList.remove('active');
+        currentJobId = null;
+      }
+
+      // ---------- SHOW TOAST ----------
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add('show');
+        setTimeout(() => {
+          toastEl.classList.remove('show');
+        }, 2800);
+      }
+
+      // ---------- HANDLE PAYMENT (simulated) ----------
+      function processPayment() {
+        if (!currentJobId) return;
+
+        // Simulate payment gateway integration point.
+        // In a real backend, this would call your payment API.
+        const jobId = currentJobId;
+        const job = jobs.find(j => j.id === jobId);
+
+        // Simulate success (you can add random failure or test cases)
+        // Mark as unlocked
+        unlockedJobs.add(jobId);
+
+        // Re-render job cards to reflect unlocked state
+        renderJobs();
+
+        // Show success toast
+        showToast(`✅ Application unlocked for ${job.title}`);
+
+        // Close modal
+        closeModal();
+      }
+
+      // ---------- EVENT LISTENERS ----------
+      cancelBtn.addEventListener('click', closeModal);
+
+      confirmBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Disable button briefly to prevent double click
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = 'Processing…';
+        // simulate network delay
+        setTimeout(() => {
+          processPayment();
+          confirmBtn.disabled = false;
+          confirmBtn.textContent = 'Pay $39';
+        }, 600);
+      });
+
+      // Close modal if overlay is clicked (not on modal itself)
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // Also close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // ---------- INIT ----------
+      renderJobs();
+    })();
+  </script>
+</body>
+  </html>
